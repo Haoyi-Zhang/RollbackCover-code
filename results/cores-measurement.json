@@ -1,0 +1,55 @@
+{
+  "suite": "unbounded-width-family-instances",
+  "subset_queries": 501,
+  "records": [
+    {
+      "hidden_worlds": 2,
+      "nonempty_subsets": 3,
+      "winning_proper_subsets": 2,
+      "core_size": 2
+    },
+    {
+      "hidden_worlds": 3,
+      "nonempty_subsets": 7,
+      "winning_proper_subsets": 6,
+      "core_size": 3
+    },
+    {
+      "hidden_worlds": 4,
+      "nonempty_subsets": 15,
+      "winning_proper_subsets": 14,
+      "core_size": 4
+    },
+    {
+      "hidden_worlds": 5,
+      "nonempty_subsets": 31,
+      "winning_proper_subsets": 30,
+      "core_size": 5
+    },
+    {
+      "hidden_worlds": 6,
+      "nonempty_subsets": 63,
+      "winning_proper_subsets": 62,
+      "core_size": 6
+    },
+    {
+      "hidden_worlds": 7,
+      "nonempty_subsets": 127,
+      "winning_proper_subsets": 126,
+      "core_size": 7
+    },
+    {
+      "hidden_worlds": 8,
+      "nonempty_subsets": 255,
+      "winning_proper_subsets": 254,
+      "core_size": 8
+    }
+  ],
+  "mismatches": 0,
+  "measurements": {
+    "wall_seconds": 0.01315813199994409,
+    "cpu_seconds": 0.011991748999999996,
+    "peak_rss_kib": 93996,
+    "workers": 1
+  }
+}

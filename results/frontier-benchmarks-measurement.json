@@ -1,0 +1,22 @@
+{
+  "suite": "deterministic-rollback-frontiers",
+  "instances": 101,
+  "families": [
+    "complete-3",
+    "disjoint",
+    "interval",
+    "random",
+    "shared"
+  ],
+  "greedy_optimal_instances": 73,
+  "interval_instances": 12,
+  "maximum_decision_nodes": 2331,
+  "maximum_proof_nodes": 265720,
+  "maximum_certificate_bytes": 14399335,
+  "mismatches": 0,
+  "measurements": {
+    "wall_seconds": 3.5672661180000205,
+    "cpu_seconds": 3.5672222230000004,
+    "solver_wall_seconds": 0.16853949499977716
+  }
+}

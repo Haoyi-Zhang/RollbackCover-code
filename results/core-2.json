@@ -1,0 +1,158 @@
+{
+  "model": {
+    "worlds": [
+      "hidden-0",
+      "hidden-1",
+      "repaired",
+      "bad"
+    ],
+    "actions": [
+      "a-0",
+      "a-1"
+    ],
+    "edges": [
+      [
+        [
+          [
+            "ack",
+            3
+          ]
+        ],
+        [
+          [
+            "ack",
+            2
+          ]
+        ],
+        [
+          [
+            "ack",
+            2
+          ]
+        ],
+        [
+          [
+            "ack",
+            3
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ack",
+            2
+          ]
+        ],
+        [
+          [
+            "ack",
+            3
+          ]
+        ],
+        [
+          [
+            "ack",
+            2
+          ]
+        ],
+        [
+          [
+            "ack",
+            3
+          ]
+        ]
+      ]
+    ],
+    "safe": [
+      0,
+      1,
+      2
+    ],
+    "goal": [
+      2
+    ]
+  },
+  "initial": [
+    0,
+    1
+  ],
+  "certificate": {
+    "core": [
+      0,
+      1
+    ],
+    "bound": 1,
+    "losing": {
+      "belief": [
+        0,
+        1
+      ],
+      "rank": 1,
+      "kind": "lose-step",
+      "witness": 0,
+      "refusals": {
+        "a-0": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              2,
+              3
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 3
+          }
+        },
+        "a-1": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              2,
+              3
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 3
+          }
+        }
+      }
+    },
+    "deletions": {
+      "0": {
+        "belief": [
+          1
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-0",
+        "branches": {
+          "ack": {
+            "belief": [
+              2
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      },
+      "1": {
+        "belief": [
+          0
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-1",
+        "branches": {
+          "ack": {
+            "belief": [
+              2
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      }
+    }
+  }
+}

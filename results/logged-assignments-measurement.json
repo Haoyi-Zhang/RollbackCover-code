@@ -1,0 +1,13 @@
+{
+  "failure_cases": 684,
+  "safe_prefix_cases": 496,
+  "restored_exact_reference": 496,
+  "excluded_unsafe_prefix_cases": 188,
+  "concrete_runs": 698,
+  "measurements": {
+    "wall_seconds": 0.012171229999921707,
+    "cpu_seconds": 0.011989106000000027,
+    "peak_rss_kib": 93616,
+    "workers": 1
+  }
+}

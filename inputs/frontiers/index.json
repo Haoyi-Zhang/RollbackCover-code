@@ -1,0 +1,30 @@
+[
+  {
+    "name": "running",
+    "description": "Three packet classes share update atoms; the optimum resets updates 1 and 3.",
+    "optimum": 2,
+    "instance": "running.frontier.json",
+    "certificate": "running.certificate.json"
+  },
+  {
+    "name": "shared",
+    "description": "Every minimal deviation contains update 0, so one reset is optimal.",
+    "optimum": 1,
+    "instance": "shared.frontier.json",
+    "certificate": "shared.certificate.json"
+  },
+  {
+    "name": "disjoint",
+    "description": "Three disjoint causes require three resets; the disjoint packing is a lower-bound certificate.",
+    "optimum": 3,
+    "instance": "disjoint.frontier.json",
+    "certificate": "disjoint.certificate.json"
+  },
+  {
+    "name": "interval",
+    "description": "Ordered interval causes admit the right-endpoint greedy optimum.",
+    "optimum": 2,
+    "instance": "interval.frontier.json",
+    "certificate": "interval.certificate.json"
+  }
+]

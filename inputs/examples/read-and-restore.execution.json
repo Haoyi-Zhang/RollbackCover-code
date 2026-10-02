@@ -1,0 +1,39 @@
+{
+  "mode": "offline finite simulation",
+  "runs": [
+    {
+      "final": 1,
+      "events": [
+        {
+          "initial": 1
+        },
+        {
+          "from": 1,
+          "action": "read-x",
+          "observation": "0",
+          "to": 1
+        }
+      ]
+    },
+    {
+      "final": 1,
+      "events": [
+        {
+          "initial": 3
+        },
+        {
+          "from": 3,
+          "action": "read-x",
+          "observation": "1",
+          "to": 3
+        },
+        {
+          "from": 3,
+          "action": "flip-x",
+          "observation": "ack",
+          "to": 1
+        }
+      ]
+    }
+  ]
+}

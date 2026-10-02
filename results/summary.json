@@ -1,0 +1,108 @@
+{
+  "principal_exact_queries": 55221,
+  "finite": {
+    "queries": 41472,
+    "winning": 12044,
+    "mismatches": 0,
+    "syntax_programs_examined": 150078
+  },
+  "network": {
+    "queries": 13248,
+    "winning": 6622,
+    "mismatches": 0,
+    "syntax_programs_examined": 52502,
+    "fault_cases": 684,
+    "unsafe_fault_cases": 176,
+    "fault_cases_with_unsafe_complete_no_fault_schedule": 258,
+    "unique_reference_beliefs": 24,
+    "by_relation": {
+      "identity": {
+        "queries": 6624,
+        "winning": 2482
+      },
+      "erase-relay": {
+        "queries": 6624,
+        "winning": 4140
+      }
+    },
+    "by_horizon": {
+      "0": {
+        "queries": 4416,
+        "winning": 2024
+      },
+      "1": {
+        "queries": 4416,
+        "winning": 2264
+      },
+      "2": {
+        "queries": 4416,
+        "winning": 2334
+      }
+    },
+    "clairvoyant_singleton_baseline_wins": 6732,
+    "clairvoyant_false_positives": 110,
+    "clairvoyant_false_positives_by_relation_and_horizon": [
+      {
+        "relation": "identity",
+        "horizon": 1,
+        "queries": 66
+      },
+      {
+        "relation": "identity",
+        "horizon": 2,
+        "queries": 44
+      }
+    ]
+  },
+  "cores": {
+    "queries": 501,
+    "winning": 494,
+    "losing": 7,
+    "mismatches": 0,
+    "rows": [
+      {
+        "hidden_worlds": 2,
+        "nonempty_subsets": 3,
+        "winning_proper_subsets": 2,
+        "core_size": 2
+      },
+      {
+        "hidden_worlds": 3,
+        "nonempty_subsets": 7,
+        "winning_proper_subsets": 6,
+        "core_size": 3
+      },
+      {
+        "hidden_worlds": 4,
+        "nonempty_subsets": 15,
+        "winning_proper_subsets": 14,
+        "core_size": 4
+      },
+      {
+        "hidden_worlds": 5,
+        "nonempty_subsets": 31,
+        "winning_proper_subsets": 30,
+        "core_size": 5
+      },
+      {
+        "hidden_worlds": 6,
+        "nonempty_subsets": 63,
+        "winning_proper_subsets": 62,
+        "core_size": 6
+      },
+      {
+        "hidden_worlds": 7,
+        "nonempty_subsets": 127,
+        "winning_proper_subsets": 126,
+        "core_size": 7
+      },
+      {
+        "hidden_worlds": 8,
+        "nonempty_subsets": 255,
+        "winning_proper_subsets": 254,
+        "core_size": 8
+      }
+    ]
+  },
+  "scope": "Exact finite checks, not machine-checked general metatheory, deployment evidence, or novelty evidence."
+}

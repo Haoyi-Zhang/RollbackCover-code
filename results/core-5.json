@@ -1,0 +1,446 @@
+{
+  "model": {
+    "worlds": [
+      "hidden-0",
+      "hidden-1",
+      "hidden-2",
+      "hidden-3",
+      "hidden-4",
+      "repaired",
+      "bad"
+    ],
+    "actions": [
+      "a-0",
+      "a-1",
+      "a-2",
+      "a-3",
+      "a-4"
+    ],
+    "edges": [
+      [
+        [
+          [
+            "ack",
+            6
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ]
+      ],
+      [
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ],
+        [
+          [
+            "ack",
+            5
+          ]
+        ],
+        [
+          [
+            "ack",
+            6
+          ]
+        ]
+      ]
+    ],
+    "safe": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "goal": [
+      5
+    ]
+  },
+  "initial": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "certificate": {
+    "core": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "bound": 1,
+    "losing": {
+      "belief": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "rank": 1,
+      "kind": "lose-step",
+      "witness": 0,
+      "refusals": {
+        "a-0": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              5,
+              6
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 6
+          }
+        },
+        "a-1": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              5,
+              6
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 6
+          }
+        },
+        "a-2": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              5,
+              6
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 6
+          }
+        },
+        "a-3": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              5,
+              6
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 6
+          }
+        },
+        "a-4": {
+          "observation": "ack",
+          "child": {
+            "belief": [
+              5,
+              6
+            ],
+            "rank": 0,
+            "kind": "lose-unsafe",
+            "witness": 6
+          }
+        }
+      }
+    },
+    "deletions": {
+      "0": {
+        "belief": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-0",
+        "branches": {
+          "ack": {
+            "belief": [
+              5
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      },
+      "1": {
+        "belief": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-1",
+        "branches": {
+          "ack": {
+            "belief": [
+              5
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      },
+      "2": {
+        "belief": [
+          0,
+          1,
+          3,
+          4
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-2",
+        "branches": {
+          "ack": {
+            "belief": [
+              5
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      },
+      "3": {
+        "belief": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-3",
+        "branches": {
+          "ack": {
+            "belief": [
+              5
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      },
+      "4": {
+        "belief": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "rank": 1,
+        "kind": "win-step",
+        "action": "a-4",
+        "branches": {
+          "ack": {
+            "belief": [
+              5
+            ],
+            "rank": 0,
+            "kind": "win-stop"
+          }
+        }
+      }
+    }
+  }
+}

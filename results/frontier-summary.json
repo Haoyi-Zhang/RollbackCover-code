@@ -1,0 +1,74 @@
+{
+  "frontier_theorem": {
+    "frontiers": 7580,
+    "support_checks": 242560,
+    "hidden_state_replays": 7761920,
+    "interval_frontiers": 132,
+    "maximum_frontier_edges": 10,
+    "maximum_certificate_bytes": 1004,
+    "mismatches": 0
+  },
+  "monotonicity_boundary": {
+    "predicates": 32768,
+    "downward_closed_predicates": 167,
+    "nonmonotone_predicates": 32601,
+    "endpoint_robust_support_checks": 524288,
+    "transversal_support_checks": 2672,
+    "mismatches": 0
+  },
+  "benchmarks": {
+    "instances": 101,
+    "greedy_optimal_instances": 73,
+    "by_family": {
+      "shared": {
+        "instances": 5,
+        "updates": 80,
+        "full_log": 80,
+        "greedy": 5,
+        "optimum": 5,
+        "full_log_saved_fraction": 0.9375,
+        "greedy_excess_fraction": 0.0
+      },
+      "disjoint": {
+        "instances": 7,
+        "updates": 105,
+        "full_log": 105,
+        "greedy": 35,
+        "optimum": 35,
+        "full_log_saved_fraction": 0.6666666666666667,
+        "greedy_excess_fraction": 0.0
+      },
+      "interval": {
+        "instances": 5,
+        "updates": 184,
+        "full_log": 184,
+        "greedy": 40,
+        "optimum": 40,
+        "full_log_saved_fraction": 0.782608695652174,
+        "greedy_excess_fraction": 0.0
+      },
+      "complete-3": {
+        "instances": 4,
+        "updates": 44,
+        "full_log": 44,
+        "greedy": 36,
+        "optimum": 36,
+        "full_log_saved_fraction": 0.18181818181818177,
+        "greedy_excess_fraction": 0.0
+      },
+      "random": {
+        "instances": 80,
+        "updates": 1440,
+        "full_log": 1440,
+        "greedy": 591,
+        "optimum": 561,
+        "full_log_saved_fraction": 0.6104166666666666,
+        "greedy_excess_fraction": 0.053475935828877004
+      }
+    },
+    "maximum_decision_nodes": 2331,
+    "maximum_proof_nodes": 265720,
+    "maximum_certificate_bytes": 14399335
+  },
+  "scope": "Owned deterministic chain networks; exact finite validation of the stated fragment, not production-network performance."
+}

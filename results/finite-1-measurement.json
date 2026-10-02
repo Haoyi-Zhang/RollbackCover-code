@@ -1,0 +1,15 @@
+{
+  "suite": "exhaustive-two-world",
+  "chunk": 1,
+  "queries": 5184,
+  "winning": 1487,
+  "losing": 3697,
+  "oracle_programs_examined": 18797,
+  "mismatches": 0,
+  "measurements": {
+    "wall_seconds": 0.05695479600001363,
+    "cpu_seconds": 0.05599425499999999,
+    "peak_rss_kib": 93992,
+    "workers": 1
+  }
+}

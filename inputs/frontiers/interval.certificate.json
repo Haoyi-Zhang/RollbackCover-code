@@ -1,0 +1,52 @@
+{
+  "width": 10,
+  "frontier": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      4,
+      5,
+      6
+    ],
+    [
+      6,
+      7,
+      8,
+      9
+    ]
+  ],
+  "support": [
+    2,
+    6
+  ],
+  "optimum": 2,
+  "lower_bound_budget": 1,
+  "lower_bound": {
+    "kind": "packing",
+    "edges": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ]
+  },
+  "metrics": {
+    "decision_nodes": 3,
+    "proof_nodes": 1,
+    "forced_reductions": 0
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "belief": [
+    1,
+    3
+  ],
+  "rank": 2,
+  "kind": "win-step",
+  "action": "read-x",
+  "branches": {
+    "0": {
+      "belief": [
+        1
+      ],
+      "rank": 1,
+      "kind": "win-stop"
+    },
+    "1": {
+      "belief": [
+        3
+      ],
+      "rank": 1,
+      "kind": "win-step",
+      "action": "flip-x",
+      "branches": {
+        "ack": {
+          "belief": [
+            1
+          ],
+          "rank": 0,
+          "kind": "win-stop"
+        }
+      }
+    }
+  }
+}

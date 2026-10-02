@@ -1,0 +1,43 @@
+{
+  "suite": "two-forwarding-node-network",
+  "queries": 13248,
+  "winning": 6622,
+  "losing": 6626,
+  "fault_cases": 684,
+  "distinct_reference_beliefs": 24,
+  "action_subsets": 92,
+  "unsafe_fault_cases": 176,
+  "unsafe_complete_schedules_fault_cases": 258,
+  "by_relation": {
+    "identity": {
+      "queries": 6624,
+      "winning": 2482
+    },
+    "erase-relay": {
+      "queries": 6624,
+      "winning": 4140
+    }
+  },
+  "by_horizon": {
+    "0": {
+      "queries": 4416,
+      "winning": 2024
+    },
+    "1": {
+      "queries": 4416,
+      "winning": 2264
+    },
+    "2": {
+      "queries": 4416,
+      "winning": 2334
+    }
+  },
+  "oracle_programs_examined": 52502,
+  "mismatches": 0,
+  "measurements": {
+    "wall_seconds": 0.20714752200001385,
+    "cpu_seconds": 0.207937757,
+    "peak_rss_kib": 94636,
+    "workers": 1
+  }
+}

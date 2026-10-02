@@ -1,0 +1,33 @@
+{
+  "mode": "offline finite simulation",
+  "runs": [
+    {
+      "final": 1,
+      "events": [
+        {
+          "initial": 1
+        },
+        {
+          "from": 1,
+          "action": "set-x-0",
+          "observation": "ack",
+          "to": 1
+        }
+      ]
+    },
+    {
+      "final": 1,
+      "events": [
+        {
+          "initial": 3
+        },
+        {
+          "from": 3,
+          "action": "set-x-0",
+          "observation": "ack",
+          "to": 1
+        }
+      ]
+    }
+  ]
+}

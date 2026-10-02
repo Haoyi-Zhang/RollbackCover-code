@@ -1,0 +1,82 @@
+{
+  "status": "scientific lock: ambiguity-robust rollback frontiers for the positive packet-chain fragment",
+  "purpose": "validate the rollback-transversal theorem, its exact downward-closure boundary, certificate checker, structured algorithms, and retained negative controls",
+  "workers": 1,
+  "peak_address_space_limit_bytes": 3758096384,
+  "per_child_cpu_seconds": 120,
+  "per_child_wall_seconds": 150,
+  "campaign_cpu_limit_seconds": 28800,
+  "reserved_repair_and_reproduction_cpu_seconds": 7200,
+  "randomness": "Only the structured random family uses fixed local seeds; exhaustive suites are lexicographic. No tuning or held-out performance claim.",
+  "frontier_exhaustive": {
+    "update_atoms": 5,
+    "included_instances": "every inclusion antichain of subsets that does not contain the empty cause, including the empty frontier",
+    "frontiers": 7580,
+    "chunks": 8,
+    "checks_per_frontier": [
+      "declared frontier equals trace-enumerated minimal bad states",
+      "compositional antichain denotation equals operational deviation on every hidden commit set",
+      "exact minimum support and optimality certificate agree with brute force",
+      "every candidate support agrees between full ambiguity-cube replay and transversal test",
+      "interval greedy agrees with brute force when every edge is an interval"
+    ],
+    "candidate_support_checks": 242560,
+    "robust_hidden_state_replays": 7761920,
+    "falsifier": "any semantic, brute-force, certificate, transversal, regression, or interval mismatch"
+  },
+  "monotonicity_boundary": {
+    "update_atoms": 4,
+    "predicates": "all 32,768 truth tables whose all-old reference is good",
+    "checks": [
+      "downward closure iff endpoint correctness equals ambiguity robustness for every support",
+      "for downward-closed predicates, frontier transversals equal both semantic notions",
+      "for a nonmonotone predicate, retain a good endpoint, bad reachable subset, and support witness"
+    ],
+    "support_checks": 524288,
+    "falsifier": "one predicate for which the exact characterization or frontier equivalence fails"
+  },
+  "structured_benchmarks": {
+    "instances": 101,
+    "families": [
+      "shared",
+      "disjoint",
+      "interval",
+      "complete-3",
+      "fixed-seed random"
+    ],
+    "width_range": [
+      6,
+      64
+    ],
+    "metrics": [
+      "full-log size",
+      "coverage-greedy size",
+      "exact optimum",
+      "decision nodes",
+      "proof nodes",
+      "certificate bytes"
+    ],
+    "interpretation": "deterministic solver/certificate stress cases; not production representativeness or throughput",
+    "falsifier": "checker rejection, endpoint failure, disagreement with brute force where feasible, or interval disagreement"
+  },
+  "certificate_mutations": [
+    "delete a branch child",
+    "replace the support by one that misses a cause",
+    "change bound or malformed key sets",
+    "legacy certificate mutations for omitted observations and successors"
+  ],
+  "retained_finite_game_baseline": {
+    "role": "negative control and boundary outside the monotone reset fragment",
+    "queries": 55221,
+    "singleton_false_positives": 110,
+    "logged_assignment_applicable_cases": 496,
+    "claim_boundary": "established bounded belief-game search; not the new synthesis result"
+  },
+  "nonclaims": [
+    "no production network, device, traffic trace, throughput, or latency evidence",
+    "no proof-assistant mechanization",
+    "no recovery-time failures, concurrency, in-flight packets, or unrestricted negation in the positive fragment",
+    "no claim that structured family savings predict operational savings",
+    "no claim that antichain provenance or hitting-set optimization is itself new"
+  ]
+}

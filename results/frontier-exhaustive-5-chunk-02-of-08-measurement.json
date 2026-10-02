@@ -1,0 +1,23 @@
+{
+  "suite": "all-proper-antichains",
+  "update_atoms": 5,
+  "chunk": 2,
+  "chunks": 8,
+  "frontiers": 948,
+  "support_checks": 30336,
+  "hidden_state_replays": 970752,
+  "interval_frontiers": 17,
+  "maximum_frontier_edges": 9,
+  "maximum_certificate_bytes": 719,
+  "optimum_histogram": {
+    "1": 88,
+    "2": 688,
+    "3": 168,
+    "4": 4
+  },
+  "mismatches": 0,
+  "measurements": {
+    "wall_seconds": 3.861508067999921,
+    "cpu_seconds": 3.861450277
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "belief": [
+    1,
+    5
+  ],
+  "rank": 2,
+  "kind": "lose-step",
+  "witness": 5,
+  "refusals": {
+    "set-x-0": {
+      "observation": "ack",
+      "child": {
+        "belief": [
+          1,
+          5
+        ],
+        "rank": 1,
+        "kind": "lose-step",
+        "witness": 5,
+        "refusals": {
+          "set-x-0": {
+            "observation": "ack",
+            "child": {
+              "belief": [
+                1,
+                5
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 5
+            }
+          },
+          "set-x-1": {
+            "observation": "ack",
+            "child": {
+              "belief": [
+                3,
+                7
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 3
+            }
+          },
+          "read-x": {
+            "observation": "0",
+            "child": {
+              "belief": [
+                1,
+                5
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 5
+            }
+          }
+        }
+      }
+    },
+    "set-x-1": {
+      "observation": "ack",
+      "child": {
+        "belief": [
+          3,
+          7
+        ],
+        "rank": 1,
+        "kind": "lose-step",
+        "witness": 3,
+        "refusals": {
+          "set-x-0": {
+            "observation": "ack",
+            "child": {
+              "belief": [
+                1,
+                5
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 5
+            }
+          },
+          "set-x-1": {
+            "observation": "ack",
+            "child": {
+              "belief": [
+                3,
+                7
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 3
+            }
+          },
+          "read-x": {
+            "observation": "1",
+            "child": {
+              "belief": [
+                3,
+                7
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 3
+            }
+          }
+        }
+      }
+    },
+    "read-x": {
+      "observation": "0",
+      "child": {
+        "belief": [
+          1,
+          5
+        ],
+        "rank": 1,
+        "kind": "lose-step",
+        "witness": 5,
+        "refusals": {
+          "set-x-0": {
+            "observation": "ack",
+            "child": {
+              "belief": [
+                1,
+                5
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 5
+            }
+          },
+          "set-x-1": {
+            "observation": "ack",
+            "child": {
+              "belief": [
+                3,
+                7
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 3
+            }
+          },
+          "read-x": {
+            "observation": "0",
+            "child": {
+              "belief": [
+                1,
+                5
+              ],
+              "rank": 0,
+              "kind": "lose-horizon",
+              "witness": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}

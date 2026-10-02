@@ -1,0 +1,19 @@
+{
+  "suite": "all-goal-predicates-with-good-reference",
+  "update_atoms": 4,
+  "predicates": 32768,
+  "downward_closed_predicates": 167,
+  "nonmonotone_predicates": 32601,
+  "endpoint_robust_support_checks": 524288,
+  "transversal_support_checks": 2672,
+  "first_nonmonotone_counterexample": {
+    "good_endpoint": 3,
+    "bad_reachable_subset": 1,
+    "support": 12
+  },
+  "mismatches": 0,
+  "measurements": {
+    "wall_seconds": 0.3019783490000236,
+    "cpu_seconds": 0.30197259499999995
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "belief": [
+    1,
+    3
+  ],
+  "rank": 1,
+  "kind": "lose-step",
+  "witness": 3,
+  "refusals": {
+    "flip-x": {
+      "observation": "ack",
+      "child": {
+        "belief": [
+          1,
+          3
+        ],
+        "rank": 0,
+        "kind": "lose-horizon",
+        "witness": 3
+      }
+    }
+  }
+}
