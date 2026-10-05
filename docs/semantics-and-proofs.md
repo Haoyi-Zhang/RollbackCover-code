@@ -25,7 +25,7 @@ The implementation represents an arbitrary predicate as a finite truth table in 
 
 *Proof.* The forward direction is Theorem 1.  For the converse, suppose `G` is not downward closed.  There are `B⊂A` with `A∈G` and `B∉G`.  Choose `R=U\A`.  Its all-new endpoint is `U\R=A`, so it is endpoint-correct.  The hidden state `H=B` is unchanged because `B⊆A` and hence disjoint from `R`; it remains bad, so the support is not robust.  ∎
 
-`predicate_boundary` exhausts all predicates with a good reference through width four.  It checks this equivalence for every support, records a concrete witness for each first failure, and separately checks the frontier characterization below for every downward-closed predicate.
+`predicate_boundary` exhausts all predicates with a good reference through width four.  It decides the universal support predicate with short-circuit evaluation, records the first concrete separating witness, and separately checks the frontier characterization below for every downward-closed predicate.
 
 ## 3. Rollback frontiers and transversals
 
@@ -111,7 +111,7 @@ A certificate has a normalized frontier, a positive support, its size, and a pro
 - `packing`: more than `k` pairwise-disjoint surviving edges require more than `k` atoms;
 - `branch`: choose a nonempty surviving edge `E`; every hitting set must choose some `v∈E`, and every child proves that the residual frontier after choosing `v` has no support within the remaining budget.
 
-Induction on the proof tree establishes soundness.  Conversely, branching on an arbitrary surviving edge and recursing on every atom constructs a finite proof whenever no budget-feasible transversal exists; zero-budget leaves terminate the recursion.  Packing leaves only shorten the proof.  Therefore the proof system is complete for finite frontiers.  The checker recomputes residual frontiers and validates exact child coverage.  Mutation tests delete branches, forge supports, and alter bounds.
+Induction on the proof tree establishes soundness.  Conversely, branching on an arbitrary surviving edge and recursing on every atom constructs a finite proof whenever no budget-feasible transversal exists; zero-budget leaves terminate the recursion.  Packing leaves only shorten the proof.  Therefore the proof system is complete for finite frontiers.  The checker recomputes residual frontiers and validates exact child coverage.  Frontier mutation controls forge a support and delete a child from a triangle-frontier branch node; finite-game tests cover their separate model obligations.
 
 ## 9. Exhaustive campaign interpretation
 
@@ -123,6 +123,6 @@ The width-five campaign enumerates all 7,580 antichains that do not contain the 
 4. the transversal theorem versus full ambiguity-cube replay for every support;
 5. interval greedy versus brute force whenever all edges are intervals.
 
-The 101 deterministic structured instances exercise shared causes, disjoint causes, intervals, complete 3-uniform frontiers, and fixed-seed random antichains.  They test exact optimization and certificate checking, not production representativeness.  The largest retained generated certificate is about 14.4 MB and is reported as a boundary rather than hidden.
+The 101 deterministic structured instances exercise shared causes, disjoint causes, intervals, complete 3-uniform frontiers, and fixed-seed random antichains.  They test exact optimization and certificate checking, not production representativeness.  The largest retained size metric is about 14.4 MB for single-line sorted-key JSON. The public indented writer uses a different serialization and cannot emit that proof within its 16 MiB cap.
 
 The older finite-game code and results are preserved because they provide a useful negative control: per-world recoverability does not imply one observation-based program.  They are not evidence that the frontier algorithm is novel or general beyond the positive fragment.

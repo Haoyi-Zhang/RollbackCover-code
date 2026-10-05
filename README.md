@@ -18,7 +18,7 @@ Requirements are Linux/POSIX and Python 3.10 or later, using only the standard l
 python3 reproduce.py --output /tmp/rr-reproduction
 ```
 
-The runner uses one child at a time, a 3.5 GiB address-space ceiling, and bounded CPU/wall time per child.  It performs 49 unit tests; regenerates all four example certificates; exhausts all 7,580 proper antichains on five update atoms in eight chunks; checks 242,560 candidate supports through 7,761,920 hidden-state replays; exhausts all 32,768 goal predicates on four atoms whose all-old reference is good; solves and certifies 101 deterministic structured instances; replays the older finite-game and logged-assignment baselines; and compares deterministic scientific files byte for byte.  Timing fields are deliberately excluded from byte equality.
+The runner uses one child at a time, a 3.5 GiB address-space ceiling, and bounded CPU/wall time per child.  It performs 49 unit tests; regenerates all four example certificates; exhausts all 7,580 proper antichains on five update atoms in eight chunks; checks all 242,560 candidate supports over a nominal 7,761,920 support--state domain, with universal replay stopping at the first failure; exhausts all 32,768 goal predicates on four atoms whose all-old reference is good; solves and certifies 101 deterministic structured instances; replays the older finite-game and logged-assignment baselines; and compares deterministic scientific files byte for byte.  Timing fields are deliberately excluded from byte equality.
 
 Expected exact frontier results are:
 
@@ -26,14 +26,16 @@ Expected exact frontier results are:
 |---|---:|
 | Proper antichains on 5 atoms | 7,580 |
 | Candidate reset supports | 242,560 |
-| Robust hidden-state replays | 7,761,920 |
+| Nominal support--state pairs (not executed replay count) | 7,761,920 |
 | Goal predicates on 4 atoms | 32,768 |
 | Downward-closed predicates | 167 |
 | Nonmonotone predicates | 32,601 |
 | Deterministic benchmark instances | 101 |
 | Mismatches | 0 |
 
-These counts define exhaustive coverage only for the stated finite widths and owned chain-network construction.  The structured benchmarks are not production traffic or performance evidence.
+These counts describe finite decision domains. The hidden-state total and the boundary's 524,288 support total are Cartesian domain sizes; their short-circuit predicates do not execute every inner comparison.  The structured benchmarks are not production traffic or performance evidence.
+
+The campaign measures certificate size as sorted-key, single-line JSON plus a newline. The public writer emits indented JSON and enforces a 16 MiB output cap. For the largest width-14 complete-three-uniform proof, indentation alone exceeds that cap; in-memory acceptance is not successful public-file replay.
 
 ## Solve and check a rollback frontier
 

@@ -89,13 +89,14 @@ class FrontierTests(unittest.TestCase):
             check_optimality_certificate(packet, expected_frontier=frontier, expected_width=4)
 
     def test_certificate_rejects_deleted_branch(self):
-        frontier = minimize([0b0011, 0b0110, 0b1100], width=4)
-        packet = make_optimality_certificate(frontier, 4)
+        frontier = minimize([0b011, 0b101, 0b110], width=3)
+        packet = make_optimality_certificate(frontier, 3)
+        check_optimality_certificate(packet, expected_frontier=frontier, expected_width=3)
         proof = packet['lower_bound']
-        if proof['kind'] == 'branch':
-            proof['children'].pop(next(iter(proof['children'])))
-            with self.assertRaises(InvalidSupportCertificate):
-                check_optimality_certificate(packet, expected_frontier=frontier, expected_width=4)
+        self.assertEqual(proof['kind'], 'branch')
+        proof['children'].pop(next(iter(proof['children'])))
+        with self.assertRaises(InvalidSupportCertificate):
+            check_optimality_certificate(packet, expected_frontier=frontier, expected_width=3)
 
     def test_interval_greedy(self):
         frontier = minimize([0b000111, 0b011100, 0b110000], width=6)
