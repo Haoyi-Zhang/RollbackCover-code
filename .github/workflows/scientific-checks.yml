@@ -1,0 +1,48 @@
+name: Scientific checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-reproduction:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Reproduce finite semantics, certificates, and retained baselines
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This workflow's checkout is the flat standalone artifact root.
+          # Bound the whole command as well as the runner's individual children.
+          ulimit -v 3932160
+          ulimit -t 900
+          timeout --signal=TERM --kill-after=10s 900s \
+            python -B reproduce.py --output "$RUNNER_TEMP/p062-scientific-results" \
+            > "$RUNNER_TEMP/p062-scientific-run.log" 2>&1
+      - name: Upload raw outputs, including failed attempts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p062-scientific-raw
+          path: |
+            ${{ runner.temp }}/p062-scientific-run.log
+            ${{ runner.temp }}/p062-scientific-results
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14

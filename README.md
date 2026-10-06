@@ -18,7 +18,11 @@ Requirements are Linux/POSIX and Python 3.10 or later, using only the standard l
 python3 reproduce.py --output /tmp/rr-reproduction
 ```
 
-The runner uses one child at a time, a 3.5 GiB address-space ceiling, and bounded CPU/wall time per child.  It performs 49 unit tests; regenerates all four example certificates; exhausts all 7,580 proper antichains on five update atoms in eight chunks; checks all 242,560 candidate supports over a nominal 7,761,920 support--state domain, with universal replay stopping at the first failure; exhausts all 32,768 goal predicates on four atoms whose all-old reference is good; solves and certifies 101 deterministic structured instances; replays the older finite-game and logged-assignment baselines; and compares deterministic scientific files byte for byte.  Timing fields are deliberately excluded from byte equality.
+The POSIX runner uses one child at a time, a 3.5 GiB address-space ceiling, and bounded CPU/wall time per child. It performs 54 unit tests; regenerates all four example certificates; exhausts all 7,580 proper antichains on five update atoms in eight chunks; checks all 242,560 candidate supports over a nominal 7,761,920 support--state domain, with universal replay stopping at the first failure; exhausts all 32,768 goal predicates on four atoms whose all-old reference is good; solves and certifies 101 deterministic structured instances; replays the older finite-game and logged-assignment baselines; and compares deterministic scientific files byte for byte. Timing fields are deliberately excluded from byte equality. The aggregate verifies each chunk's identity and complete assigned index sequence, and recomputes its counts from CSV rows.
+
+`results/reproduction.json` is the retained historical 49-test run, including that host's CPU and memory observations; it is not a measurement of the current 54-test suite. The additional tests cover nonmonotone minimal-bad-set robustness and rejection of duplicated or inconsistent exhaustive evidence.
+
+For an arbitrary finite goal, minimal bad sets still characterize robust blind supports over the full ambiguity cube. Without downward closure, their upward closure is not the exact bad-state predicate, and endpoint-only checking, state-specific active-cause repair, and regression freedom do not follow.
 
 Expected exact frontier results are:
 

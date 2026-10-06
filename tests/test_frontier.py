@@ -138,6 +138,16 @@ class UpdateLanguageTests(unittest.TestCase):
                 self.assertEqual(evaluate(expr, hidden, 4), deviates(frontier, hidden))
 
 class RobustnessBoundaryTests(unittest.TestCase):
+    def test_minimal_bad_sets_characterize_robust_supports_without_monotonicity(self):
+        from robustness import bad_frontier, robust_correct
+        # The bad predicate is not generally its upward closure. Full-cube
+        # robustness nevertheless forbids every minimal bad set from surviving.
+        for tail in range(128):
+            table = 1 | (tail << 1)
+            frontier = bad_frontier(table, 3)
+            for support in range(8):
+                self.assertEqual(robust_correct(table, 3, support), hits(frontier, support))
+
     def test_downward_closure_exactly_characterizes_endpoint_collapse(self):
         from robustness import downward_closed, endpoint_robust_equivalent
         width = 3
@@ -177,6 +187,63 @@ class RobustnessBoundaryTests(unittest.TestCase):
         ok, witness = available_recovery(frontier, 0b0110, 4)
         self.assertTrue(ok)
         self.assertIsNone(witness)
+
+
+class ScientificAggregationTests(unittest.TestCase):
+    def _fixture(self, directory):
+        from pathlib import Path
+        import shutil
+        results = Path(__file__).resolve().parents[1] / 'results'
+        for path in results.glob('frontier-exhaustive-5-*'):
+            shutil.copyfile(path, directory / path.name)
+
+    def test_complete_exhaustive_domain_accepted(self):
+        from pathlib import Path
+        from frontier_campaign import _checked_exhaustive_chunks
+        results = Path(__file__).resolve().parents[1] / 'results'
+        self.assertEqual(sum(d['frontiers'] for d in _checked_exhaustive_chunks(results, 8)), 7580)
+
+    def test_duplicate_chunk_metadata_rejected(self):
+        from pathlib import Path
+        import tempfile
+        from frontier_campaign import _checked_exhaustive_chunks
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            self._fixture(out)
+            path = out / 'frontier-exhaustive-5-chunk-01-of-08-measurement.json'
+            data = json.loads(path.read_text())
+            data['chunk'] = 0
+            path.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError, 'identity'):
+                _checked_exhaustive_chunks(out, 8)
+
+    def test_duplicate_frontier_index_rejected(self):
+        from pathlib import Path
+        import tempfile
+        from frontier_campaign import _checked_exhaustive_chunks
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            self._fixture(out)
+            path = out / 'frontier-exhaustive-5-chunk-00-of-08.csv'
+            lines = path.read_text().splitlines()
+            lines[-1] = lines[1]
+            path.write_text('\n'.join(lines) + '\n')
+            with self.assertRaisesRegex(ValueError, 'indices'):
+                _checked_exhaustive_chunks(out, 8)
+
+    def test_inflated_exhaustive_counts_rejected(self):
+        from pathlib import Path
+        import tempfile
+        from frontier_campaign import _checked_exhaustive_chunks
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            self._fixture(out)
+            path = out / 'frontier-exhaustive-5-chunk-00-of-08-measurement.json'
+            data = json.loads(path.read_text())
+            data['support_checks'] += 1
+            path.write_text(json.dumps(data))
+            with self.assertRaisesRegex(ValueError, 'measurement'):
+                _checked_exhaustive_chunks(out, 8)
 
 
 if __name__ == '__main__':

@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parent
 ADDRESS_LIMIT = 3_758_096_384  # 3.5 GiB
 CPU_LIMIT = 120
 WALL_LIMIT = 150
+UNIT_TEST_METHODS = 54
 
 
 def semantic_json(path: Path) -> object:
@@ -128,7 +129,7 @@ def main() -> int:
         run_step(tasks[index], out=out, env=env, index=index, steps=steps)
         if index == 0:
             text = (out / "command-00.txt").read_text()
-            if not re.search(r"Ran 49 tests", text):
+            if not re.search(rf"Ran {UNIT_TEST_METHODS} tests\b", text):
                 raise AssertionError("unexpected unit-test count")
         controller = {
             "next_index": index + 1,
@@ -214,7 +215,7 @@ def main() -> int:
     logged_summary = json.loads((out / "logged-assignments-measurement.json").read_text())
     data = {
         "status": "all documented deterministic checks reproduced",
-        "unit_test_methods": 49,
+        "unit_test_methods": UNIT_TEST_METHODS,
         "frontier_antichains": frontier_summary["frontier_theorem"]["frontiers"],
         "frontier_support_checks": frontier_summary["frontier_theorem"]["support_checks"],
         "frontier_hidden_state_replays": frontier_summary["frontier_theorem"]["hidden_state_replays"],

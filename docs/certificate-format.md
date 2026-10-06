@@ -27,7 +27,7 @@ The solver emits:
 }
 ```
 
-The exact edge order is canonical: increasing cardinality and then integer bit-mask order.  `metrics` is informational and is not trusted as proof.  The checker validates the support and recursively validates `lower_bound`.
+The exact edge order is canonical: increasing cardinality and then integer bit-mask order. `metrics` is informational and is not trusted as proof. The checker validates the support and, for positive optimum, recursively validates `lower_bound` at budget `optimum-1`. For optimum zero it requires an empty frontier and support, `lower_bound_budget=-1`, and `lower_bound=null`; the recursive proof kernel is not called at a negative budget.
 
 Negative proof node shapes are:
 

@@ -46,6 +46,17 @@ This theorem immediately yields four corollaries.
 3. If only atoms in an availability set `A` can be reset, recovery exists exactly when `A` hits every frontier edge; an edge disjoint from `A` is a complete unrecoverability witness.
 4. Every reset order is regression-free for the positive deviation language: reset operations only remove committed atoms, so no upward-closed deviation can become newly active.
 
+The full-cube blind-support characterization itself needs less than downward
+closure. For any finite good predicate with a good reference, let `F=min(2^U\G)`.
+Then `R` is ambiguity-robust iff it hits every member of `F`: a missed bad
+minimal set `E` survives on hidden state `H=E`; conversely, every bad repaired
+state contains a minimal bad set disjoint from `R`. Without monotonicity,
+`up(F)` is generally larger than the actual bad predicate. It still describes
+which retained atom sets contain a bad hidden subset, but does not justify
+endpoint-only checking, state-specific repair, or regression freedom. The
+exact boundary in Theorem 2 concerns endpoint collapse, not the existence of a
+hypergraph description of robust blind supports.
+
 ## 4. Perfect observation cannot improve worst-case reset count
 
 Let `tau(F)` be the minimum transversal size.  Suppose a controller can observe the exact hidden set before choosing resets.  For a particular `H`, it may choose a minimum transversal of the residual active causes.  Nevertheless:
@@ -60,7 +71,7 @@ The code exhausts this equality over every proper antichain on four atoms by ind
 
 For every nonempty frontier edge `E`, `forwarding.py` constructs one packet class and an acyclic chain of positive tests, one for each update atom in `E`.  The packet exits at `ALLOW` when it encounters an old atom; it reaches `DROP` exactly when every atom in `E` is new.  Projection keeps the packet-class identifier, ingress, and outcome while erasing internal test nodes.  The relational goal is equality between the set of projected traces in the current state and in the all-old reference.
 
-Therefore packet class `E` deviates exactly when `E⊆H`.  The union over packet classes is bad exactly when one frontier edge is contained in `H`.  Every finite nonempty antichain is realized by this construction, so the identity reduction from Hitting Set produces owned packet-chain instances without importing an external benchmark.
+Therefore packet class `E` deviates exactly when `E⊆H`. The union over packet classes is bad exactly when one frontier edge is contained in `H`. Every finite antichain without the empty cause, including the empty frontier, is realized by this construction, so the identity reduction from Hitting Set with nonempty edges produces owned packet-chain instances without importing an external benchmark.
 
 **Theorem 5 (frontier realization).** The symbolic antichain denotation, direct operational packet traces, and exhaustive enumeration of minimal bad commit sets all equal the declared frontier.
 
@@ -84,9 +95,9 @@ The semiring/provenance machinery is established algebraic technique; the resear
 
 The decision problem asks whether a frontier has a transversal of size at most `k`.
 
-**Theorem 6.** Minimum robust rollback support is NP-complete, even for the packet-chain fragment.
+**Theorem 6.** Deciding whether a robust rollback support of size at most `k` exists is NP-complete, even for the packet-chain fragment. Cardinality optimization is NP-hard.
 
-*Proof.* Membership in NP follows by checking intersection with every edge.  For hardness, map an arbitrary Hitting Set instance `(U,F,k)` to the packet-chain network of Section 5.  By Theorem 3, its robust rollback supports of size at most `k` are exactly the hitting sets of the original instance.  The construction is polynomial.  ∎
+*Proof.* Membership in NP follows by checking intersection with every edge. For hardness, use Hitting Set with nonempty edges, already NP-hard on two-element edges by Vertex Cover, and normalize its family by absorption. Map `(U,F,k)` to the packet-chain network of Section 5. By Theorem 3, its robust rollback supports of size at most `k` are exactly the hitting sets of the original instance. The construction is polynomial and the all-old reference is good. ∎
 
 `support.py` includes:
 
@@ -104,7 +115,7 @@ If every edge has size at most `d`, the basic search tree has at most `d^k` leav
 
 ## 8. Optimality certificates
 
-A certificate has a normalized frontier, a positive support, its size, and a proof that no support of size one less exists.  The checker verifies the positive hits directly.  Its negative proof rules are:
+A certificate has a normalized frontier, a positive support, its size, and, for positive optimum, a proof that no support of size one less exists. The checker verifies the positive hits directly. At optimum zero, it requires an empty frontier and support, `lower_bound_budget=-1`, and `lower_bound=null`; nonnegative cardinality establishes the lower bound without a recursive proof. Its negative proof rules for nonnegative budgets are:
 
 - `unconditional`: the empty edge survives, so no support can remove the deviation;
 - `zero-budget`: a nonempty edge survives when no reset remains;

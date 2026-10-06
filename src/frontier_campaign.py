@@ -6,6 +6,7 @@ import csv
 import json
 import random
 import time
+from collections import Counter
 from pathlib import Path
 from typing import Iterable
 
@@ -261,11 +262,41 @@ def benchmarks(out: Path) -> dict:
     return result
 
 
-def summarize(out: Path, chunks: int = 8) -> dict:
+def _checked_exhaustive_chunks(out: Path, chunks: int) -> list[dict]:
+    """Bind reported exhaustive counts to the complete, disjoint row domain."""
+    if type(chunks) is not int or not 1 <= chunks <= 7580:
+        raise ValueError("invalid width-five chunk count")
     measurements = []
     for chunk in range(chunks):
         path = out / f"frontier-exhaustive-5-chunk-{chunk:02d}-of-{chunks:02d}-measurement.json"
-        measurements.append(json.loads(path.read_text()))
+        data = json.loads(path.read_text())
+        if (data.get("suite"), data.get("update_atoms"), data.get("chunk"), data.get("chunks")) != (
+                "all-proper-antichains", 5, chunk, chunks):
+            raise ValueError("exhaustive chunk identity differs from its assigned domain")
+        csv_path = out / f"frontier-exhaustive-5-chunk-{chunk:02d}-of-{chunks:02d}.csv"
+        with csv_path.open(newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        indices = [int(row["frontier_index"]) for row in rows]
+        if indices != list(range(chunk, 7580, chunks)):
+            raise ValueError("exhaustive indices are missing, duplicated, or assigned to the wrong chunk")
+        expected = {
+            "frontiers": len(rows),
+            "support_checks": 32 * len(rows),
+            "hidden_state_replays": 1024 * len(rows),
+            "interval_frontiers": sum(int(row["interval"]) for row in rows),
+            "maximum_frontier_edges": max(int(row["edges"]) for row in rows),
+            "maximum_certificate_bytes": max(int(row["certificate_bytes"]) for row in rows),
+            "optimum_histogram": dict(Counter(row["optimum"] for row in rows)),
+            "mismatches": 0,
+        }
+        if any(data.get(key) != value for key, value in expected.items()):
+            raise ValueError("exhaustive measurement disagrees with its scientific rows")
+        measurements.append(data)
+    return measurements
+
+
+def summarize(out: Path, chunks: int = 8) -> dict:
+    measurements = _checked_exhaustive_chunks(out, chunks)
     exhaustive_data = {
         "frontiers": sum(x["frontiers"] for x in measurements),
         "support_checks": sum(x["support_checks"] for x in measurements),
