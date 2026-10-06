@@ -1,0 +1,583 @@
+{
+  "status": "all documented deterministic checks reproduced",
+  "unit_test_methods": 54,
+  "frontier_antichains": 7580,
+  "frontier_support_checks": 242560,
+  "frontier_hidden_state_replays": 7761920,
+  "goal_predicates": 32768,
+  "benchmark_instances": 101,
+  "legacy_exact_queries": 55221,
+  "legacy_logged_assignment_cases": 496,
+  "byte_identical_scientific_files": 57,
+  "compared_files": [
+    "results/finite-0.csv",
+    "results/finite-1.csv",
+    "results/finite-2.csv",
+    "results/finite-3.csv",
+    "results/finite-4.csv",
+    "results/finite-5.csv",
+    "results/finite-6.csv",
+    "results/finite-7.csv",
+    "results/network.csv",
+    "results/fault-cases.json",
+    "results/core-2.json",
+    "results/core-3.json",
+    "results/core-4.json",
+    "results/core-5.json",
+    "results/core-6.json",
+    "results/core-7.json",
+    "results/core-8.json",
+    "results/logged-assignments.csv",
+    "results/summary.json",
+    "results/frontier-exhaustive-5-chunk-00-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-01-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-02-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-03-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-04-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-05-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-06-of-08.csv",
+    "results/frontier-exhaustive-5-chunk-07-of-08.csv",
+    "results/frontier-benchmarks.csv",
+    "results/frontier-summary.json",
+    "inputs/examples/ambiguous-flip.certificate.json",
+    "inputs/examples/ambiguous-flip.core.json",
+    "inputs/examples/ambiguous-flip.problem.json",
+    "inputs/examples/cases.json",
+    "inputs/examples/hidden-reference.certificate.json",
+    "inputs/examples/hidden-reference.core.json",
+    "inputs/examples/hidden-reference.problem.json",
+    "inputs/examples/idempotent-restore.certificate.json",
+    "inputs/examples/idempotent-restore.execution.json",
+    "inputs/examples/idempotent-restore.problem.json",
+    "inputs/examples/minimal-not-minimum.certificate.json",
+    "inputs/examples/minimal-not-minimum.core.json",
+    "inputs/examples/minimal-not-minimum.problem.json",
+    "inputs/examples/read-and-restore.certificate.json",
+    "inputs/examples/read-and-restore.execution.json",
+    "inputs/examples/read-and-restore.problem.json",
+    "inputs/examples/read-too-short.certificate.json",
+    "inputs/examples/read-too-short.core.json",
+    "inputs/examples/read-too-short.problem.json",
+    "inputs/frontiers/disjoint.certificate.json",
+    "inputs/frontiers/disjoint.frontier.json",
+    "inputs/frontiers/index.json",
+    "inputs/frontiers/interval.certificate.json",
+    "inputs/frontiers/interval.frontier.json",
+    "inputs/frontiers/running.certificate.json",
+    "inputs/frontiers/running.frontier.json",
+    "inputs/frontiers/shared.certificate.json",
+    "inputs/frontiers/shared.frontier.json"
+  ],
+  "full_child_cpu_seconds": 69.824406,
+  "controller_cpu_seconds_to_measurement": 0.30618599999999996,
+  "wall_seconds": 71.234480429,
+  "peak_child_rss_kib": 177136,
+  "workers": 1,
+  "child_address_space_limit_bytes": 3758096384,
+  "child_cpu_limit_seconds": 120,
+  "child_wall_limit_seconds": 150,
+  "steps": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.7684966959999997,
+      "child_cpu_seconds": 0.693144
+    },
+    {
+      "command": [
+        "python",
+        "src/pilot.py",
+        "--output",
+        "<OUTPUT>/pilot.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.16694478499999832,
+      "child_cpu_seconds": 0.11759799999999995
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "0",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.21490465299999784,
+      "child_cpu_seconds": 0.2029040000000001
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "1",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.21490864900000162,
+      "child_cpu_seconds": 0.21106199999999992
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "2",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.3182582310000015,
+      "child_cpu_seconds": 0.26757
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "3",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.26502612500000566,
+      "child_cpu_seconds": 0.25649600000000006
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "4",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.2653691219999956,
+      "child_cpu_seconds": 0.21597600000000006
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "5",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.21485677599999775,
+      "child_cpu_seconds": 0.21394100000000016
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "6",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.2650195310000001,
+      "child_cpu_seconds": 0.21518399999999982
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "finite",
+        "--chunk",
+        "7",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.26541809500000113,
+      "child_cpu_seconds": 0.2194940000000001
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "network",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.5156549910000052,
+      "child_cpu_seconds": 0.4684919999999999
+    },
+    {
+      "command": [
+        "python",
+        "src/campaign.py",
+        "cores",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11452729699999509,
+      "child_cpu_seconds": 0.10511300000000032
+    },
+    {
+      "command": [
+        "python",
+        "src/logged_rollback.py",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11460913000000517,
+      "child_cpu_seconds": 0.09362799999999999
+    },
+    {
+      "command": [
+        "python",
+        "src/examples.py",
+        "--output",
+        "<OUTPUT>/examples"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11459851400000076,
+      "child_cpu_seconds": 0.0769939999999999
+    },
+    {
+      "command": [
+        "python",
+        "src/analyze.py",
+        "--results",
+        "<OUTPUT>",
+        "--output",
+        "<OUTPUT>/summary.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.26506950400000306,
+      "child_cpu_seconds": 0.23096499999999978
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_examples.py",
+        "--output",
+        "<OUTPUT>/frontiers"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11460344000000333,
+      "child_cpu_seconds": 0.078293
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "0",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.383479267999995,
+      "child_cpu_seconds": 7.363155
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "1",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.433548649000002,
+      "child_cpu_seconds": 7.411215000000002
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "2",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.484561412000005,
+      "child_cpu_seconds": 7.440589999999998
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "3",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.888063179000007,
+      "child_cpu_seconds": 7.807045000000002
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "4",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.483023336000002,
+      "child_cpu_seconds": 7.432866999999999
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "5",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.433071314000003,
+      "child_cpu_seconds": 7.385542000000004
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "6",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.383692166000003,
+      "child_cpu_seconds": 7.3400089999999985
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "exhaustive",
+        "--width",
+        "5",
+        "--chunk",
+        "7",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.383378287999989,
+      "child_cpu_seconds": 7.356161000000007
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "boundary",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.515414781000004,
+      "child_cpu_seconds": 0.49082600000000126
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "benchmarks",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 5.478484722000005,
+      "child_cpu_seconds": 5.431114999999993
+    },
+    {
+      "command": [
+        "python",
+        "src/frontier_campaign.py",
+        "summary",
+        "--chunks",
+        "8",
+        "--output",
+        "<OUTPUT>"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.1144635129999898,
+      "child_cpu_seconds": 0.1056270000000113
+    },
+    {
+      "command": [
+        "python",
+        "src/rr.py",
+        "solve",
+        "--input",
+        "<OUTPUT>/examples/read-and-restore.problem.json",
+        "--output",
+        "<OUTPUT>/cli-positive.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.1144160880000129,
+      "child_cpu_seconds": 0.06867499999999116
+    },
+    {
+      "command": [
+        "python",
+        "src/rr.py",
+        "check",
+        "--input",
+        "<OUTPUT>/examples/read-and-restore.problem.json",
+        "--certificate",
+        "<OUTPUT>/cli-positive.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11462147400000333,
+      "child_cpu_seconds": 0.07020800000000715
+    },
+    {
+      "command": [
+        "python",
+        "src/rr.py",
+        "execute",
+        "--input",
+        "<OUTPUT>/examples/read-and-restore.problem.json",
+        "--certificate",
+        "<OUTPUT>/cli-positive.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11475163299999736,
+      "child_cpu_seconds": 0.07048600000000205
+    },
+    {
+      "command": [
+        "python",
+        "src/rr.py",
+        "core",
+        "--input",
+        "<OUTPUT>/examples/minimal-not-minimum.problem.json",
+        "--output",
+        "<OUTPUT>/cli-core.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11465669399999001,
+      "child_cpu_seconds": 0.06914700000000451
+    },
+    {
+      "command": [
+        "python",
+        "src/rr.py",
+        "check-core",
+        "--input",
+        "<OUTPUT>/examples/minimal-not-minimum.problem.json",
+        "--certificate",
+        "<OUTPUT>/cli-core.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11467075299999863,
+      "child_cpu_seconds": 0.06951499999999278
+    },
+    {
+      "command": [
+        "python",
+        "src/support_cli.py",
+        "solve",
+        "--input",
+        "<OUTPUT>/frontiers/running.frontier.json",
+        "--output",
+        "<OUTPUT>/cli-frontier-certificate.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11457160700000202,
+      "child_cpu_seconds": 0.0838840000000014
+    },
+    {
+      "command": [
+        "python",
+        "src/support_cli.py",
+        "check",
+        "--input",
+        "<OUTPUT>/frontiers/running.frontier.json",
+        "--certificate",
+        "<OUTPUT>/cli-frontier-certificate.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11460145200000227,
+      "child_cpu_seconds": 0.07939099999999855
+    },
+    {
+      "command": [
+        "python",
+        "src/support_cli.py",
+        "simulate",
+        "--input",
+        "<OUTPUT>/frontiers/running.frontier.json",
+        "--certificate",
+        "<OUTPUT>/cli-frontier-certificate.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.11467965699999638,
+      "child_cpu_seconds": 0.08209399999999933
+    }
+  ],
+  "interpretation": "Execution evidence for finite instances; not a proof-assistant result, deployment benchmark, or independent review."
+}

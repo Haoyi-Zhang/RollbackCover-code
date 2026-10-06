@@ -22,6 +22,8 @@ The POSIX runner uses one child at a time, a 3.5 GiB address-space ceiling, and 
 
 `results/reproduction.json` is the retained historical 49-test run, including that host's CPU and memory observations; it is not a measurement of the current 54-test suite. The additional tests cover nonmonotone minimal-bad-set robustness and rejection of duplicated or inconsistent exhaustive evidence.
 
+The current Ubuntu run completed all 35 documented invocations, including 54 tests, in 71.23 wall seconds and 69.82 child CPU seconds; maximum child RSS was 177,136 KiB. Its 57 scientific files agree with the retained files after line-ending normalization, and 22 measurement files agree on their non-measurement fields. It includes 496 safe-prefix cases and 698 concrete logged runs; these are distinct counts. The run record and test log are in `results/measurements/` (GitHub run 37443751613), separate from the historical measurements.
+
 For an arbitrary finite goal, minimal bad sets still characterize robust blind supports over the full ambiguity cube. Without downward closure, their upward closure is not the exact bad-state predicate, and endpoint-only checking, state-specific active-cause repair, and regression freedom do not follow.
 
 Expected exact frontier results are:
