@@ -18,11 +18,11 @@ Requirements are Linux/POSIX and Python 3.10 or later, using only the standard l
 python3 reproduce.py --output /tmp/rr-reproduction
 ```
 
-The POSIX runner uses one child at a time, a 3.5 GiB address-space ceiling, and bounded CPU/wall time per child. It performs 54 unit tests; regenerates all four example certificates; exhausts all 7,580 proper antichains on five update atoms in eight chunks; checks all 242,560 candidate supports over a nominal 7,761,920 support--state domain, with universal replay stopping at the first failure; exhausts all 32,768 goal predicates on four atoms whose all-old reference is good; solves and certifies 101 deterministic structured instances; replays the older finite-game and logged-assignment baselines; and compares deterministic scientific files byte for byte. Timing fields are deliberately excluded from byte equality. The aggregate verifies each chunk's identity and complete assigned index sequence, and recomputes its counts from CSV rows.
+The POSIX runner uses one child at a time, a 3.5 GiB address-space ceiling, and bounded CPU/wall time per child. It performs 60 unit tests; regenerates all four example certificates; exhausts all 7,580 proper antichains on five update atoms in eight chunks; checks all 242,560 candidate supports over a nominal 7,761,920 support--state domain, with universal replay stopping at the first failure; exhausts all 32,768 goal predicates on four atoms whose all-old reference is good; solves and certifies 101 deterministic structured instances; replays the older finite-game and logged-assignment baselines; and compares deterministic scientific files byte for byte. Timing fields are deliberately excluded from byte equality. The aggregate verifies each chunk's identity and complete assigned index sequence, and recomputes its counts from CSV rows.
 
-`results/reproduction.json` is the retained historical 49-test run, including that host's CPU and memory observations; it is not a measurement of the current 54-test suite. The additional tests cover nonmonotone minimal-bad-set robustness and rejection of duplicated or inconsistent exhaustive evidence.
+`results/reproduction.json` is the retained historical 49-test run, including that host's CPU and memory observations; it is not a measurement of the current 60-test suite. Additional tests cover nonmonotone minimal-bad-set robustness, rejection of duplicated or inconsistent exhaustive evidence, canonical packing, literal finite support oracles, and default/compact export boundaries.
 
-The current Ubuntu run completed all 35 documented invocations, including 54 tests, in 71.23 wall seconds and 69.82 child CPU seconds; maximum child RSS was 177,136 KiB. Its 57 scientific files agree with the retained files after line-ending normalization, and 22 measurement files agree on their non-measurement fields. It includes 496 safe-prefix cases and 698 concrete logged runs; these are distinct counts. The run record and test log are in `results/measurements/` (GitHub run 37443751613), separate from the historical measurements.
+The retained Ubuntu run completed all 35 documented invocations, including 54 tests, in 71.23 wall seconds and 69.82 child CPU seconds; maximum child RSS was 177,136 KiB. Its 57 scientific files agree with the retained files after line-ending normalization, and 22 measurement files agree on their non-measurement fields. It includes 496 safe-prefix cases and 698 concrete logged runs; these are distinct counts. The run record and test log are in `results/measurements/` (GitHub run 37443751613), separate from the historical measurements. It predates the six packing/export regressions; those tests do not imply a new complete campaign run.
 
 For an arbitrary finite goal, minimal bad sets still characterize robust blind supports over the full ambiguity cube. Without downward closure, their upward closure is not the exact bad-state predicate, and endpoint-only checking, state-specific active-cause repair, and regression freedom do not follow.
 
@@ -41,7 +41,7 @@ Expected exact frontier results are:
 
 These counts describe finite decision domains. The hidden-state total and the boundary's 524,288 support total are Cartesian domain sizes; their short-circuit predicates do not execute every inner comparison.  The structured benchmarks are not production traffic or performance evidence.
 
-The campaign measures certificate size as sorted-key, single-line JSON plus a newline. The public writer emits indented JSON and enforces a 16 MiB output cap. For the largest width-14 complete-three-uniform proof, indentation alone exceeds that cap; in-memory acceptance is not successful public-file replay.
+The campaign measures certificate size as sorted-key, single-line JSON plus a newline. The public writer defaults to indented JSON and enforces a 16 MiB output cap. For the largest width-14 complete-three-uniform proof, indentation alone exceeds that cap; in-memory acceptance is not successful public-file replay. The solve interface also accepts `--compact` for sorted-key JSON without optional separator whitespace, under the same cap and exclusive-create rule. It preserves every proof node and checker obligation. Compact size is not the campaign's retained byte metric; bounded round-trip tests do not establish public-file replay of that largest case.
 
 ## Solve and check a rollback frontier
 
@@ -64,6 +64,8 @@ python3 src/support_cli.py simulate \
 The certificate contains a positive hitting support and a recursively checkable proof that no smaller support exists.  Negative leaves use an unconditional cause, a zero-budget surviving edge, or a packing of more pairwise-disjoint causes than the budget.  Branch nodes cover every possible reset selected from one surviving cause.  The checker recomputes each residual frontier and does not call the optimization routine.
 
 ## Repository map
+
+Solver entry points normalize edge order by cardinality and mask. Deleting hit edges preserves that order, so internal packing scans reuse it; the unsorted packing wrapper still sorts. This changes no support choice, proof ordering, or search counters and makes no measured runtime claim. The portable tests use a literal Cartesian frontier/support oracle and a separate priority-scan packing reference. Run the full unit suite with `PYTHONPATH=src python3 -m unittest discover -s tests -v`.
 
 - `src/frontier.py`: absorptive antichain operations and exhaustive antichain generation.
 - `src/update_language.py`: positive acyclic deviation language and compositional denotation.

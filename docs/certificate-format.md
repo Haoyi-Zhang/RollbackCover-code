@@ -42,6 +42,8 @@ A branch child is interpreted after removing every frontier edge hit by the name
 
 ## Program
 
+`support_cli solve --compact` changes only JSON whitespace and object-key order: all arrays, proof children, and fields remain present. Default indented bytes are unchanged. Both forms use the same strict reader and checker, 16 MiB encoded-output cap, and no-overwrite rule.
+
 A blind reset program is:
 
 ```json

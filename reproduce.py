@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent
 ADDRESS_LIMIT = 3_758_096_384  # 3.5 GiB
 CPU_LIMIT = 120
 WALL_LIMIT = 150
-UNIT_TEST_METHODS = 54
+UNIT_TEST_METHODS = 60
 
 
 def semantic_json(path: Path) -> object:

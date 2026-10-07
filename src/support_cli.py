@@ -67,6 +67,7 @@ def main() -> int:
     solve = sub.add_parser("solve")
     solve.add_argument("--input", type=Path, required=True)
     solve.add_argument("--output", type=Path, required=True)
+    solve.add_argument("--compact", action="store_true", help="write compact sorted-key JSON under the unchanged size cap")
     for name in ("check", "simulate"):
         cmd = sub.add_parser(name)
         cmd.add_argument("--input", type=Path, required=True)
@@ -77,7 +78,7 @@ def main() -> int:
         if args.command == "solve":
             packet = make_optimality_certificate(frontier, width)
             check_optimality_certificate(packet, expected_frontier=frontier, expected_width=width)
-            write_new(args.output, packet)
+            write_new(args.output, packet, compact=args.compact)
             print(json.dumps({"optimum": packet["optimum"], "support": packet["support"], "output": str(args.output)}))
         else:
             packet = read_json(args.certificate)

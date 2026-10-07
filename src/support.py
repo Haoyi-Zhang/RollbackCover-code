@@ -91,9 +91,14 @@ def interval_support(frontier: Sequence[int], width: int) -> int:
 
 
 def _packing(frontier: Sequence[int]) -> tuple[int, ...]:
+    return _packing_canonical(sorted(frontier, key=lambda e: (e.bit_count(), e)))
+
+
+def _packing_canonical(frontier: Sequence[int]) -> tuple[int, ...]:
+    """Pack a canonical frontier; filtering hit edges preserves its order."""
     chosen: list[int] = []
     used = 0
-    for edge in sorted(frontier, key=lambda e: (e.bit_count(), e)):
+    for edge in frontier:
         if not edge & used:
             chosen.append(edge)
             used |= edge
@@ -113,7 +118,7 @@ def _decision(frontier: Frontier, width: int, budget: int, metrics: SearchMetric
     if not current:
         memo[key] = forced
         return forced
-    if remaining <= 0 or len(_packing(current)) > remaining:
+    if remaining <= 0 or len(_packing_canonical(current)) > remaining:
         memo[key] = None
         return None
     edge = min(current, key=lambda e: (e.bit_count(), e))
@@ -145,7 +150,7 @@ def optimal_support(frontier: Sequence[int], width: int, *, metrics: SearchMetri
         raise ValueError("unconditional deviation has no rollback support")
     m = metrics if metrics is not None else SearchMetrics()
     upper = greedy_support(f, width).bit_count() if f else 0
-    lower = len(_packing(f))
+    lower = len(_packing_canonical(f))
     for budget in range(lower, upper + 1):
         candidate = find_support(f, width, budget, metrics=m)
         if candidate is not None:
@@ -171,7 +176,7 @@ def _negative_proof(frontier: Frontier, budget: int, metrics: SearchMetrics) -> 
         return None
     if 0 in frontier:
         return {"kind": "unconditional", "edge": []}
-    packing = _packing(frontier)
+    packing = _packing_canonical(frontier)
     if len(packing) > budget:
         return {"kind": "packing", "edges": [variables_from_mask(e) for e in packing]}
     if budget == 0:

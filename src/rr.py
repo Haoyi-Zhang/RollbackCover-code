@@ -15,10 +15,12 @@ def problem(path: Path):
     return model,model.belief(obj['initial']),horizon(obj['bound'])
 
 
-def write_new(path: Path, obj, *, max_bytes: int = 16 * 1024 * 1024) -> None:
+def write_new(path: Path, obj, *, max_bytes: int = 16 * 1024 * 1024, compact: bool = False) -> None:
     # Reject oversized publications before creating a destination. Existing
     # evidence is never overwritten, even when the desired contents are equal.
-    encoded = (json.dumps(obj, indent=2) + '\n').encode('utf-8')
+    text = (json.dumps(obj, sort_keys=True, separators=(',', ':')) if compact
+            else json.dumps(obj, indent=2))
+    encoded = (text + '\n').encode('utf-8')
     if len(encoded) > max_bytes:
         raise ValueError('output exceeds the certificate JSON size limit')
     path.parent.mkdir(parents=True, exist_ok=True)

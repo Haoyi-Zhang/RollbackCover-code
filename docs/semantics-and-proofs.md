@@ -134,6 +134,6 @@ The width-five campaign enumerates all 7,580 antichains that do not contain the 
 4. the transversal theorem versus full ambiguity-cube replay for every support;
 5. interval greedy versus brute force whenever all edges are intervals.
 
-The 101 deterministic structured instances exercise shared causes, disjoint causes, intervals, complete 3-uniform frontiers, and fixed-seed random antichains.  They test exact optimization and certificate checking, not production representativeness.  The largest retained size metric is about 14.4 MB for single-line sorted-key JSON. The public indented writer uses a different serialization and cannot emit that proof within its 16 MiB cap.
+The 101 deterministic structured instances exercise shared causes, disjoint causes, intervals, complete 3-uniform frontiers, and fixed-seed random antichains.  They test exact optimization and certificate checking, not production representativeness.  The largest retained size metric is about 14.4 MB for single-line sorted-key JSON. The default public indented writer uses a different serialization and cannot emit that proof within its 16 MiB cap. Optional compact export keeps the cap and complete proof, but the bounded regression is not a rerun of this largest structured case.
 
 The older finite-game code and results are preserved because they provide a useful negative control: per-world recoverability does not imply one observation-based program.  They are not evidence that the frontier algorithm is novel or general beyond the positive fragment.
