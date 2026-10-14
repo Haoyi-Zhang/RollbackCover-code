@@ -122,7 +122,7 @@ A certificate has a normalized frontier, a positive support, its size, and, for 
 - `packing`: more than `k` pairwise-disjoint surviving edges require more than `k` atoms;
 - `branch`: choose a nonempty surviving edge `E`; every hitting set must choose some `v∈E`, and every child proves that the residual frontier after choosing `v` has no support within the remaining budget.
 
-Induction on the proof tree establishes soundness.  Conversely, branching on an arbitrary surviving edge and recursing on every atom constructs a finite proof whenever no budget-feasible transversal exists; zero-budget leaves terminate the recursion.  Packing leaves only shorten the proof.  Therefore the proof system is complete for finite frontiers.  The checker recomputes residual frontiers and validates exact child coverage.  Frontier mutation controls forge a support and delete a child from a triangle-frontier branch node; finite-game tests cover their separate model obligations.
+Induction on the proof tree establishes soundness.  For every nonnegative integer budget, branching on an arbitrary surviving edge and recursing on every atom constructs a finite proof whenever no budget-feasible transversal exists; zero-budget leaves terminate the recursion.  Packing leaves only shorten the proof.  Therefore the proof system is complete for finite frontiers at nonnegative budgets.  The checker recomputes residual frontiers and validates exact child coverage.  Frontier mutation controls forge a support and delete a child from a triangle-frontier branch node; finite-game tests cover their separate model obligations.
 
 ## 9. Exhaustive campaign interpretation
 
