@@ -7,6 +7,11 @@ from checker import check, check_core
 from oracle import oracle
 
 
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise RuntimeError(message)
+
+
 def run() -> dict:
     start, cpu = time.monotonic(), time.process_time()
     scenarios = []
@@ -17,20 +22,26 @@ def run() -> dict:
         cert = Solver(model).solve(initial, bound)
         result = is_winning(cert)
         exact, searched = oracle(model, initial, bound)
-        assert result == exact
-        assert check(model, initial, bound, cert) == ('win' if result else 'lose')
+        require(result == exact, "solver and syntax oracle disagree")
+        require(
+            check(model, initial, bound, cert) == ('win' if result else 'lose'),
+            "certificate checker disagrees with the solver result",
+        )
         scenarios.append({'actions': list(actions), 'bound': bound, 'belief': sorted(initial),
                           'winning': result, 'oracle_programs_examined': searched,
                           'program': extract_program(cert) if result else None,
                           'clairvoyant_all_singletons': all(is_winning(Solver(model).solve(frozenset({w}), bound)) for w in initial)})
-    assert [x['winning'] for x in scenarios] == [False, False, True, True]
-    assert scenarios[0]['clairvoyant_all_singletons']
+    require(
+        [x['winning'] for x in scenarios] == [False, False, True, True],
+        "discriminating pilot outcomes changed",
+    )
+    require(scenarios[0]['clairvoyant_all_singletons'], "clairvoyant control changed")
     family = []
     for n in (2, 3, 4, 8):
         m, b = conflict_family(n)
         core = minimal_core(m, b, 1)
         check_core(m, b, 1, core)
-        assert len(core['core']) == n
+        require(len(core['core']) == n, f"conflict-family core has size {len(core['core'])}, expected {n}")
         family.append({'hidden_worlds': n, 'core_size': len(core['core'])})
     return {'phase': 'pre-lock discriminating pilot', 'scenarios': scenarios, 'core_family': family,
             'measurements': {'wall_seconds': time.monotonic()-start,
