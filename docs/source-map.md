@@ -1,6 +1,6 @@
 # Source map and novelty boundary
 
-Access date for the final internal pass: **2026-09-15** (America/Los_Angeles). External papers are cited or paraphrased; no external paper PDF is redistributed in this artifact. Exact URLs, license boundaries, and integration modes are in `../external_resources.csv`.
+Source access record: **2026-09-15** (America/Los_Angeles). External papers are cited or paraphrased; no external paper PDF is redistributed in this artifact. Exact URLs, license boundaries, and integration modes are in `../external_resources.csv`.
 
 ## Direct lineage and strongest technical comparisons
 
@@ -45,4 +45,3 @@ The paper does **not** claim novelty for hitting sets, antichains, provenance se
 - Scholarly PDFs were consulted through publisher, author, or archive copies and are not bundled.
 - Website snippets and official policy pages are workflow evidence, not manuscript scholarship.
 - A bibliography record is not treated as proof that a source establishes a theorem; the manuscript comparisons are tied to the substantive roles above.
-- The TOPLAS calibration corpus recorded in `../../research-plan.md` is used for structure and exposition, not as technical evidence for the rollback claims.
